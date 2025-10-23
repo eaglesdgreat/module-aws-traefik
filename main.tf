@@ -20,7 +20,6 @@ resource "helm_release" "traefik-ingress" {
   name       = "ms-traefik-ingress"
   repository = "https://helm.traefik.io/traefik"
   chart      = "traefik"
-  namespace  = "kube-system"
 
   values = [<<EOF
   service:
