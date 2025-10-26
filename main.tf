@@ -17,9 +17,13 @@ provider "aws" {
 }
 
 resource "helm_release" "traefik-ingress" {
-  name       = "ms-traefik-ingress"
-  repository = "https://helm.traefik.io/traefik"
-  chart      = "traefik"
+  name          = "ms-traefik-ingress"
+  repository    = "https://helm.traefik.io/traefik"
+  chart         = "traefik"
+  version       = "5.46.8"
+  timeout       = 2400 # Increase to 20 minutes
+  wait          = true
+  wait_for_jobs = true
 
   values = [<<EOF
   service:
